@@ -19,6 +19,26 @@
         "imagenes": ["./src/imagenes/fondoEstrellas.jpg", "./src/imagenes/logo-tmp.png"],
         "categoria": "ropa",
         "ventas": 20
+    },
+    {
+        "id" : 3,
+        "nombre": "hola3",
+        "descripcion": "descricion del producto",
+        "precio": 15.99,
+        "stock": 20,
+        "imagenes": ["./src/imagenes/logo-tmp.png", "./src/imagenes/logo-tmp.png"],
+        "categoria": "ropa",
+        "ventas": 20
+    },
+    {
+        "id" : 4,
+        "nombre": "hola4",
+        "descripcion": "descricion del producto",
+        "precio": 15.99,
+        "stock": 20,
+        "imagenes": ["./src/imagenes/fondoEstrellas.jpg", "./src/imagenes/logo-tmp.png"],
+        "categoria": "ropa",
+        "ventas": 20
     }
     
 ]

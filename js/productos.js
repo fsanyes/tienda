@@ -4,25 +4,32 @@ const fragmento = document.createDocumentFragment();
 
 let carrito = {}
 
-const setCarrito = objeto => {
-    
-}
+let monedas = "€$£"
 
 const sumaCarrito = e => {
-    console.log(e.target);
+    // console.log(e.target);
     // console.log(e.target.classList.contains('comprar'));
     if (e.target.classList.contains('comprar')) {
-        // TODO: seguir con la implementación del carrito
+        setCarrito(e.target.parentElement);
     }
     e.stopPropagation();
 }
 
+const setCarrito = objeto => {
+    console.log(objeto);
+    const producto = {
+        id: objeto.querySelector('button').dataset.id,
+        nombre: objeto.querySelector('h5').textContent,
+        precio: objeto.querySelector('#precio').textContent
+    }
+    console.log(producto);
+}
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
 })
 
-objetos.addEventListener('click', objeto => {
-    sumaCarrito(objeto);
+objetos.addEventListener('click', e => {
+    sumaCarrito(e);
 })
 const fetchData = async () => {
     try {
@@ -39,7 +46,7 @@ const pintarObjetos = datos => {
     console.log(datos);
     datos.forEach(producto => {
         templateCard.querySelector('h5').textContent = producto.nombre;
-        templateCard.querySelector('#precio').textContent = producto.precio;
+        templateCard.querySelector('#precio').textContent = `${producto.precio}€`;
         templateCard.querySelector('img').setAttribute("src", producto.imagenes[0])
         templateCard.querySelector('button').dataset.id = producto.id;
         const clon = templateCard.cloneNode(true);
