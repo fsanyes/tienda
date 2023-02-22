@@ -78,7 +78,7 @@
 		</div>
 	</div>
 	<!-- Carousel -->
-	<div class="container-fluid">
+	<div class="p-0 container-fluid">
 		<div class="row">
 			<div class="col-md-12">
 				<div id="carousel" class="carousel slide" data-bs-ride="carousel">
@@ -175,14 +175,37 @@
 		<!-- Productos -->
 		<div class="row">
 			<div class="pt-3 col-md-12">
-				<div class="row">
+				<div id="objetos" class="row">
+
+					<!-- Template -->
+					<template id="template-card">
+						<div class="pt-1 col-md-4">
+							<div class="card">
+								<img class="card-img-top" alt="" width="100%"
+									src="https://www.layoutit.com/img/people-q-c-600-200-1.jpg">
+								<div class="card-block">
+									<h5 class="card-title">
+										Card title
+									</h5>
+									<p class="card-text">
+										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
+										porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+									</p>
+									<p>
+										<button class="m-1 btn btn-primary comprar" href="#">Comprar</button> <span id="precio" class="precio" href="#">Precio</span><span id="moneda">€</span>
+									</p>
+								</div>
+							</div>
+						</div>
+					</template>
+
 					<div class="col-md-4">
 						<div class="card">
-							<img class="card-img-top" alt="Bootstrap Thumbnail First"
+							<img class="card-img-top" alt=""
 								src="https://www.layoutit.com/img/people-q-c-600-200-1.jpg">
 							<div class="card-block">
 								<h5 class="card-title">
-									Card title
+									objeto 1
 								</h5>
 								<p class="card-text">
 									Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
@@ -196,11 +219,11 @@
 					</div>
 					<div class="col-md-4">
 						<div class="card">
-							<img class="card-img-top" alt="Bootstrap Thumbnail Second"
+							<img class="card-img-top" alt=""
 								src="https://www.layoutit.com/img/city-q-c-600-200-1.jpg">
 							<div class="card-block">
 								<h5 class="card-title">
-									Card title
+									objeto 2
 								</h5>
 								<p class="card-text">
 									Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
@@ -214,11 +237,11 @@
 					</div>
 					<div class="col-md-4">
 						<div class="card">
-							<img class="card-img-top" alt="Bootstrap Thumbnail Third"
+							<img class="card-img-top" alt=""
 								src="https://www.layoutit.com/img/sports-q-c-600-200-1.jpg">
 							<div class="card-block">
 								<h5 class="card-title">
-									Card title
+									objeto 3
 								</h5>
 								<p class="card-text">
 									Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi

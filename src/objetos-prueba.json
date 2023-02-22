@@ -1,24 +1,48 @@
-
-{
-    "producto":{
-        "nombre": "hola",
-        "descripcion": "descricion del producto",
-        "precio": 12.00,
-        "stock": 20,
-        "imagenes": ["/src/imagenes/","/src/imagenes"],
-        "categoria": "ropa",
-        "ventas": 20,
-        "valoraciones": [
-            {
-                "usuario": "paco",
-                "comentario": "buena calidad",
-                "rate": 5.00
-            },
-            {
-                "usuario": "jose",
-                "comentario": "no es lo que esperaba",
-                "rate": 2.4
-            }
-        ]
+[
+    {
+        "producto":{
+            "nombre": "hola",
+            "descripcion": "descricion del producto",
+            "precio": 12.00,
+            "stock": 20,
+            "imagenes": ["/src/imagenes/","/src/imagenes"],
+            "categoria": "ropa",
+            "ventas": 20,
+            "valoraciones": [
+                {
+                    "usuario": "paco",
+                    "comentario": "buena calidad",
+                    "rate": 5.00
+                },
+                {
+                    "usuario": "jose",
+                    "comentario": "no es lo que esperaba",
+                    "rate": 2.4
+                }
+            ]
+        }
+    },
+    {
+        "producto":{
+            "nombre": "hola",
+            "descripcion": "descricion del producto",
+            "precio": 12.00,
+            "stock": 20,
+            "imagenes": ["./src/imagenes/fondoEstrellas.jpg", "./src/imagenes/logo-tmp.png"],
+            "categoria": "ropa",
+            "ventas": 20,
+            "valoraciones": [
+                {
+                    "usuario": "paco",
+                    "comentario": "buena calidad",
+                    "rate": 5.00
+                },
+                {
+                    "usuario": "jose",
+                    "comentario": "no es lo que esperaba",
+                    "rate": 2.4
+                }
+            ]
+        }
     }
-}
+]

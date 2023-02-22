@@ -6,17 +6,17 @@
         "descripcion": "descricion del producto",
         "precio": 12.00,
         "stock": 20,
-        "imagenes": ["/src/imagenes/","/src/imagenes"],
+        "imagenes": ["./src/imagenes/logo-tmp.png","./src/imagenes/fondoEstrellas.jpg"],
         "categoria": "ropa",
         "ventas": 20
     },
     {
-        "id" : 1,
-        "nombre": "hola",
+        "id" : 2,
+        "nombre": "hola2",
         "descripcion": "descricion del producto",
-        "precio": 12.00,
+        "precio": 15.99,
         "stock": 20,
-        "imagenes": ["/src/imagenes/","/src/imagenes"],
+        "imagenes": ["./src/imagenes/fondoEstrellas.jpg", "./src/imagenes/logo-tmp.png"],
         "categoria": "ropa",
         "ventas": 20
     }
