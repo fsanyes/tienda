@@ -1,0 +1,19 @@
+
+
+@media (max-width: 768px) {
+    #brand {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    .equipo {
+        padding: 5px;
+        display: flex;
+
+    }
+    address {
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+}

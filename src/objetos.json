@@ -1,4 +1,3 @@
-
 [
     {
         "id" : 1,
@@ -33,6 +32,26 @@
     {
         "id" : 4,
         "nombre": "hola4",
+        "descripcion": "descricion del producto",
+        "precio": 15.99,
+        "stock": 20,
+        "imagenes": ["./src/imagenes/fondoEstrellas.jpg", "./src/imagenes/logo-tmp.png"],
+        "categoria": "ropa",
+        "ventas": 20
+    },
+    {
+        "id" : 5,
+        "nombre": "hola5",
+        "descripcion": "descricion del producto",
+        "precio": 15.99,
+        "stock": 20,
+        "imagenes": ["./src/imagenes/fondoEstrellas.jpg", "./src/imagenes/logo-tmp.png"],
+        "categoria": "ropa",
+        "ventas": 20
+    },
+    {
+        "id" : 6,
+        "nombre": "hola6",
         "descripcion": "descricion del producto",
         "precio": 15.99,
         "stock": 20,
