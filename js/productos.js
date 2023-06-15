@@ -77,7 +77,6 @@ const setCarrito = objeto => {
         id: objeto.querySelector('button').dataset.id,
         nombre: objeto.querySelector('h5').textContent,
         precio: objeto.querySelector('#precio').textContent
-        //Cambiar precio para que no entre el €
     }
     carrito.push(producto);
     console.log(carrito);
