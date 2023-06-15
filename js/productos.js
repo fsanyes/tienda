@@ -51,13 +51,13 @@ let monedas = "€$£"
 // console.log("Carrito Vacio? = "+isEmpty(carrito));
 
 function carritoActivo() {
-    let iconoCarrito = document.getElementById('carrito');
-    let nProductos = document.getElementById('nProductos');
+    const iconoCarrito = document.getElementById('carrito');
+    const nProductos = document.getElementById('nProductos');
     if (carrito.length != 0)
-        iconoCarrito.classList += " active";
+        iconoCarrito.classList.add("active");
         
     else {
-        iconoCarrito.classList = "btn btn-outline-success";
+        iconoCarrito.classList.remove("active");
     }
     nProductos.innerHTML = carrito.length;
 }
@@ -79,7 +79,7 @@ const setCarrito = objeto => {
         precio: objeto.querySelector('#precio').textContent
     }
     carrito.push(producto);
-    console.log(carrito);
+    // console.log(carrito);
     carritoActivo();
     guardaStorage();
 }
@@ -96,17 +96,21 @@ const fetchData = async () => {
     try {
         const resul = await fetch('/src/objetos.json')
         const datos = await resul.json();
-        console.log(datos);
-        pintarObjetos(datos);
+        // console.log(datos);
+        pintarObjetosDestacados(datos);
     } catch (error) {
         console.log("error al cargar archivo JSON")
     }
 }
 
-//TODO: Esta será la funcion pintaDestacados
-const pintarObjetos = datos => {
-    datos.forEach(producto => {
+const pintarObjetosDestacados = datos => {
+    const productosDestacados = datos.filter(({destacado}) => destacado === true)
+    console.log("Productos destacados")
+    console.log(productosDestacados)
+    productosDestacados.forEach(producto => {
         templateCard.querySelector('h5').textContent = producto.nombre;
+        templateCard.querySelector('#vista').href = producto.imagenes[1];
+        templateCard.querySelector('#detalles').href = "detalles.html";
         templateCard.querySelector('#precio').textContent = `${producto.precio}`;
         templateCard.querySelector('img').setAttribute("src", producto.imagenes[0])
         templateCard.querySelector('button').dataset.id = producto.id;
