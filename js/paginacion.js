@@ -1,7 +1,7 @@
 
 let nPaginas;
-let arrayObjetos = [];
-let maxItems = 10;//Max items por pagina
+let itemsObjetos = [];
+let maxItems = 12;//Max items por pagina
 let paginaActual = 1;
 
 const fetchObjetos = async () => {
@@ -9,10 +9,10 @@ const fetchObjetos = async () => {
         const resul = await fetch('/src/objetos.json')
         const datos = await resul.json();
         // console.log(datos);
-        arrayObjetos = obtenerDatos(datos)
-        console.log(arrayObjetos)
-        manejaItems(arrayObjetos, maxItems, 0)
-        nPaginas = Math.ceil(arrayObjetos.length / maxItems)
+        itemsObjetos = obtenerDatos(datos)
+        console.log(itemsObjetos)
+        muestraItems(itemsObjetos, maxItems, 0)
+        nPaginas = Math.ceil(itemsObjetos.length / maxItems)
         muestraPaginas(nPaginas)
         
     } catch (error) {
@@ -21,9 +21,9 @@ const fetchObjetos = async () => {
 }
 
 function obtenerDatos(datos) {
-    const nuevoArray = []
-    datos.forEach(dato => nuevoArray.push(dato))
-    return nuevoArray
+    const listaObjetos = []
+    datos.forEach(dato => listaObjetos.push(dato))
+    return listaObjetos
 }
 
 fetchObjetos();
@@ -52,7 +52,7 @@ const setPagina = (siguientePagina) => {
     const rangoPrev = (paginaActual - 1) * maxItems;
 
     manejaPaginaActiva();
-    manejaItems(arrayObjetos, rango, rangoPrev);
+    muestraItems(itemsObjetos, rango, rangoPrev);
 
     // console.log("Rango: "+rango);
     // console.log("RangoPrev: "+rangoPrev);
@@ -78,7 +78,7 @@ const manejaPaginaActiva = () => {
     else botonSiguiente.classList.remove("disabled")
 }
 
-function manejaItems(array, rango, rangoPrev) {
+function muestraItems(items, rango, rangoPrev) {
     const listaItems = document.getElementById('items');//Lista de items de la pagina
     let index = rangoPrev;
     //Limpia la lista de items
@@ -86,17 +86,22 @@ function manejaItems(array, rango, rangoPrev) {
         listaItems.removeChild(listaItems.firstChild);
     }
 
-    if (rango > array.length) rango = array.length;//!Posible efecto secundario
+    if (rango > items.length) rango = items.length;//!Posible efecto secundario
     //Monta la lista de items
     for (index; index < rango; index++) {
+        console.log(items[index])
         const li = document.createElement("li");
-        // li.innerHTML = `<a href="#" class="btn btn-primary">Dato: ${array[index]}</a>`
+        li.classList.add("list-group-item")
+        // li.innerHTML = `<a href="#" class="btn btn-primary">Dato: ${items[index]}</a>`
         li.innerHTML = `<div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="...">
+                            <img src="${items[index].imagenes[0]}" class="card-img-top" alt="${items[index].nombre}">
                             <div class="card-body">
-                            <h5 class="card-title">Dato: ${array[index]}</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title">${items[index].nombre}</h5>
+                                <p class="card-text">${items[index].descripcion}</p>
+                                <button href="#" class="btn btn-primary comprar" data-id="${items[index].id}">Comprar</button>
+                                <p class="m-auto p-2"><span class="text-success" id="precio">${items[index].precio}</span><span class="text-success" id="simbolo">€</span>
+                                    <button href="detalles.html" class="btn btn-success ms-5" data-id="${items[index].id}" id="detalles">Detalles</button>
+                                </p>
                             </div>
                         </div>`
         listaItems.append(li);

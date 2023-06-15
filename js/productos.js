@@ -1,8 +1,8 @@
 
-const objetos = document.getElementById('objetos');
+const destacados = document.getElementById('objetos');
 const templateCard = document.getElementById('template-card').content
 const fragmento = document.createDocumentFragment();
-
+const items = document.getElementById("items")
 // LocalStorage
 const cargaStorage = function () {
     
@@ -40,16 +40,6 @@ compruebaStorage();
 
 cargaStorage();
 
-
-
-let monedas = "€$£"
-
-// function isEmpty(obj) {
-//     return Object.keys(obj).length === 0;
-// }
-
-// console.log("Carrito Vacio? = "+isEmpty(carrito));
-
 function carritoActivo() {
     const iconoCarrito = document.getElementById('carrito');
     const nProductos = document.getElementById('nProductos');
@@ -61,14 +51,37 @@ function carritoActivo() {
     }
     nProductos.innerHTML = carrito.length;
 }
+//TODO: Hacer detalles utilizando funcion parecida a esta cambiando comprar por detalles 
+const detallesProducto = e => {
+    // console.log(e.target);
+    console.log(e.target.id);
+    if (e.target.id === "detalles") {
+        setDetalles(e.target.parentElement);
+    }
+    e.stopPropagation();
+}
+
+const setDetalles = objeto => {
+    console.log(objeto);
+    const producto = {
+        id: objeto.querySelector('#detalles').dataset.id,
+    }
+    // const productoSeleccionado = datos.filter(({id}) => id === producto.id)
+    console.log(producto);
+    guardaDetalles(producto)
+}
+
+function guardaDetalles(id) {
+    localStorage.setItem("detalles", JSON.stringify(id));
+}
 
 const sumaCarrito = e => {
     // console.log(e.target);
-    // console.log(e.target.classList.contains('comprar'));
+    console.log(e.target.classList.contains('comprar'));
     if (e.target.classList.contains('comprar')) {
         setCarrito(e.target.parentElement);
     }
-    e.stopPropagation();
+    e.stopPropagation();    
 }
 
 const setCarrito = objeto => {
@@ -88,8 +101,13 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchData();
 })
 
-objetos.addEventListener('click', e => {
+destacados.addEventListener('click', e => {
     sumaCarrito(e);
+    detallesProducto(e)
+})
+items.addEventListener('click', e => {
+    sumaCarrito(e);
+    detallesProducto(e)
 })
 
 const fetchData = async () => {
@@ -111,11 +129,12 @@ const pintarObjetosDestacados = datos => {
         templateCard.querySelector('h5').textContent = producto.nombre;
         templateCard.querySelector('#vista').href = producto.imagenes[1];
         templateCard.querySelector('#detalles').href = "detalles.html";
+        templateCard.querySelector('#detalles').dataset.id = producto.id;
         templateCard.querySelector('#precio').textContent = `${producto.precio}`;
         templateCard.querySelector('img').setAttribute("src", producto.imagenes[0])
         templateCard.querySelector('button').dataset.id = producto.id;
         const clon = templateCard.cloneNode(true);
         fragmento.appendChild(clon);
     })
-    objetos.appendChild(fragmento);
+    destacados.appendChild(fragmento);
 }
