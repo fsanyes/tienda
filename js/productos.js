@@ -9,14 +9,13 @@ const cargaStorage = function () {
     const carritoJSON = localStorage.getItem("carrito");
     if (carritoJSON) {
         carrito = JSON.parse(carritoJSON)
-        console.log("Storage cargado: " + carrito.length + " productos")
-        console.log(carrito)
+        // console.log("Storage cargado: " + carrito.length + " productos")
+        // console.log(carrito)
         carritoActivo();
     }
     else {
         carrito = [];
     }
-    
 }
 
 const guardaStorage = function() {
@@ -45,7 +44,6 @@ function carritoActivo() {
     const nProductos = document.getElementById('nProductos');
     if (carrito.length != 0)
         iconoCarrito.classList.add("active");
-        
     else {
         iconoCarrito.classList.remove("active");
     }
@@ -68,13 +66,14 @@ const setDetalles = objeto => {
     }
     // const productoSeleccionado = datos.filter(({id}) => id === producto.id)
     console.log(producto);
-    guardaDetalles(producto)
+    guardaDetalles(producto);
 }
 
 function guardaDetalles(id) {
     localStorage.setItem("detalles", JSON.stringify(id));
 }
 
+//Funciones de carrito
 const sumaCarrito = e => {
     // console.log(e.target);
     console.log(e.target.classList.contains('comprar'));
@@ -120,15 +119,15 @@ const fetchData = async () => {
         console.log("error al cargar archivo JSON")
     }
 }
-
+//Muestra los objetos destacados
 const pintarObjetosDestacados = datos => {
     const productosDestacados = datos.filter(({destacado}) => destacado === true)
-    console.log("Productos destacados")
-    console.log(productosDestacados)
+    // console.log("Productos destacados")
+    // console.log(productosDestacados)
     productosDestacados.forEach(producto => {
         templateCard.querySelector('h5').textContent = producto.nombre;
         templateCard.querySelector('#vista').href = producto.imagenes[1];
-        templateCard.querySelector('#detalles').href = "detalles.html";
+        templateCard.querySelector('#detalles').href = "../detalles.html";
         templateCard.querySelector('#detalles').dataset.id = producto.id;
         templateCard.querySelector('#precio').textContent = `${producto.precio}`;
         templateCard.querySelector('img').setAttribute("src", producto.imagenes[0])

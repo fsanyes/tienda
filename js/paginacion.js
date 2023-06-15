@@ -10,7 +10,7 @@ const fetchObjetos = async () => {
         const datos = await resul.json();
         // console.log(datos);
         itemsObjetos = obtenerDatos(datos)
-        console.log(itemsObjetos)
+        // console.log(itemsObjetos)
         muestraItems(itemsObjetos, maxItems, 0)
         nPaginas = Math.ceil(itemsObjetos.length / maxItems)
         muestraPaginas(nPaginas)
@@ -45,7 +45,7 @@ const setPagina = (siguientePagina) => {
     paginaActual = siguientePagina;
     //Impide que paginaActual salga del rango de paginas
     if (paginaActual < 1) paginaActual = 1;
-    if (paginaActual > nPaginas) paginaActual = nPaginas;
+    else if (paginaActual > nPaginas) paginaActual = nPaginas;
 
     //controla que items se mostraran 
     const rango = paginaActual * maxItems;
@@ -89,7 +89,7 @@ function muestraItems(items, rango, rangoPrev) {
     if (rango > items.length) rango = items.length;//!Posible efecto secundario
     //Monta la lista de items
     for (index; index < rango; index++) {
-        console.log(items[index])
+        // console.log(items[index])
         const li = document.createElement("li");
         li.classList.add("list-group-item")
         // li.innerHTML = `<a href="#" class="btn btn-primary">Dato: ${items[index]}</a>`
@@ -100,7 +100,7 @@ function muestraItems(items, rango, rangoPrev) {
                                 <p class="card-text">${items[index].descripcion}</p>
                                 <button href="#" class="btn btn-primary comprar" data-id="${items[index].id}">Comprar</button>
                                 <p class="m-auto p-2"><span class="text-success" id="precio">${items[index].precio}</span><span class="text-success" id="simbolo">€</span>
-                                    <button href="detalles.html" class="btn btn-success ms-5" data-id="${items[index].id}" id="detalles">Detalles</button>
+                                    <a href="detalles.html"><button class="btn btn-success ms-5" data-id="${items[index].id}" id="detalles">Detalles</button></a>
                                 </p>
                             </div>
                         </div>`

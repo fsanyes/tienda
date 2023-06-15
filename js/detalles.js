@@ -42,10 +42,65 @@ function muestraDetalles(objeto) {
     const contenedorDetalles = document.getElementById("detalles");
     div.classList.add("card")
     div.innerHTML = `<img class="w-50" src="${objeto.imagenes[0]}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${objeto.nombre}</h5>
-                        <p class="card-text">${objeto.descripcion}</p>
-                        <a href="#" class="btn btn-primary">Comprar</a>
+                    <div class="card-body d-flex">
+                        <div class="container">
+                            <h5 class="card-title">${objeto.nombre} |<span class="text-success"> ${objeto.precio}€</span></h5><span class="bg-black text-secondary rounded">${objeto.coleccion}</span>
+                            <p class="card-text">${objeto.descripcion}</p>
+                            <a href="#" class="btn btn-primary" data-id="${objeto.id}">Comprar</a>
+                            <a target="_blank" href="${objeto.imagenes[1]}" class="card-link m-5">Vista 3D</a>
+                        </div>
+                        <div class="container d-flex justify-content-end">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <p class="card-text">Stock: ${objeto.stock}</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <p class="card-text">Categoria: ${objeto.categoria}</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <p class="card-text">Estado: ${calculaDesgaste(objeto.float)}</p>
+                                </li>
+                            </ul>
+                        </div>
                     </div>`
     contenedorDetalles.append(div)
+}
+//Calcular estado del arma
+// 0 – 0.07 – Factory New 
+// 0.07 – 0.15 – Minimal Wear 
+// 0.15 – 0.38 – Field-Tested 
+// 0.38 – 0.45 – Well-Worn 
+// 0.45 – 1 – Battle-Scarred
+function calculaDesgaste(float) {
+
+    if (float >= 0 && float < 0.07) {
+        return "Recien fabricado";
+    } else if (float >= 0.07 && float < 0.15) {
+        return "Casi nuevo";
+    } else if (float >= 0.15 && float < 0.38) {
+        return "Algo desgastado";
+    } else if (float >= 0.38 && float < 0.45) {
+        return "Bastante desgastado";
+    } else if (float >= 0.45 && float <= 1) {
+        return "Deplorable";
+    } else {
+        return "Valor no válido";
+    }
+    // switch(float) {
+    //     case 0:
+    //     case 0.07:
+    //         return "Recien fabricado"
+    //     case 0.07:
+    //     case 0.15:
+    //         return "Casi nuevo"
+    //     case 0.15:
+    //     case 0.38: 
+    //         return "Algo desgastado"
+    //     case 0.38:
+    //     case 0.45:
+    //         return "Bastante desgastado"
+    //     case 0.45:
+    //     case 1:
+    //         return "Deplorable"
+    // }
 }
