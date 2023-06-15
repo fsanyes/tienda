@@ -25,7 +25,7 @@ botonSiguiente.addEventListener('click', (e) => {
 manejaItems(arrayPrueba, maxItems, 0)
 //Monta el paginador
 muestraPaginas(nPaginas)
-
+evitaDefault();
 const setPagina = (siguientePagina) => {
     paginaActual = siguientePagina;
     //Impide que paginaActual salga del rango de paginas
@@ -37,7 +37,7 @@ const setPagina = (siguientePagina) => {
     const rangoPrev = (paginaActual - 1) * maxItems;
 
     manejaPaginaActiva();
-    manejaItems(arrayObjetos, rango, rangoPrev);
+    manejaItems(arrayPrueba, rango, rangoPrev);
 
     // console.log("Rango: "+rango);
     // console.log("RangoPrev: "+rangoPrev);
@@ -104,9 +104,20 @@ function muestraPaginas(nPaginas) {
         //Añade funcionalidad al boton de la pagina
         li.addEventListener("click", (e) => {
             setPagina(pagina)
-            e.preventDefault();
+            
         });
         //Inserta la linea antes de la ultima linea
         botonSiguiente.parentNode.insertBefore(li, botonSiguiente);
     }
+}
+//TODO: introducir esta funcion en muestraPaginas para evitar el doble addEventListener
+function evitaDefault() {
+    const paginacion = document.getElementById('paginacion');
+    const aPaginacion = paginacion.querySelectorAll('a')
+    console.log(aPaginacion)
+    aPaginacion.forEach(boton => {
+        boton.addEventListener('click', (e) => {
+            e.preventDefault();
+        })
+    })
 }
