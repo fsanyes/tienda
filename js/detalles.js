@@ -1,4 +1,67 @@
 //Obtiene los detalles del objeto seleccionado, despues llama a fetchObjetos
+const detalles = document.getElementById("detalles");
+
+//Funciones de carrito
+detalles.addEventListener('click', (e) => {
+    sumaCarrito(e)
+})
+
+const guardaStorage = function() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+}
+
+const cargaStorage = function () {
+    
+    const carritoJSON = localStorage.getItem("carrito");
+    if (carritoJSON) {
+        carrito = JSON.parse(carritoJSON)
+        // console.log("Storage cargado: " + carrito.length + " productos")
+        // console.log(carrito)
+        carritoActivo();
+    }
+    else {
+        carrito = [];
+    }
+}
+
+let carrito = [];
+
+cargaStorage();
+
+const sumaCarrito = e => {
+    // console.log(e.target);
+    console.log(e.target.classList.contains('comprar'));
+    if (e.target.classList.contains('comprar')) {
+        setCarrito(e.target.parentElement);
+    }
+    e.stopPropagation();    
+}
+
+const setCarrito = objeto => {
+    console.log(objeto);
+    const producto = {
+        id: objeto.querySelector('#comprar').dataset.id,//Cambiado 'button' por '#comprar'
+        nombre: objeto.querySelector('h5').textContent,
+        precio: objeto.querySelector('#precio').textContent
+    }
+    carrito.push(producto);
+    // console.log(carrito);
+    carritoActivo();
+    guardaStorage();
+}
+
+function carritoActivo() {
+    const iconoCarrito = document.getElementById('carrito');
+    const nProductos = document.getElementById('nProductos');
+    if (carrito.length != 0)
+        iconoCarrito.classList.add("active");
+    else {
+        iconoCarrito.classList.remove("active");
+    }
+    nProductos.innerHTML = carrito.length;
+}
+
+//Funciones de detalles
 const cargaStorageDetalles = function () {
     const detallesJSON = localStorage.getItem("detalles");
 
@@ -44,9 +107,9 @@ function muestraDetalles(objeto) {
     div.innerHTML = `<img class="w-50" src="${objeto.imagenes[0]}" class="card-img-top" alt="...">
                     <div class="card-body d-flex">
                         <div class="container">
-                            <h5 class="card-title">${objeto.nombre} |<span class="text-success"> ${objeto.precio}€</span></h5><span class="bg-black text-secondary rounded">${objeto.coleccion}</span>
+                            <h5 class="card-title">${objeto.nombre} |<span class="text-success" id="precio"> ${objeto.precio}€</span></h5><span class="bg-black text-secondary rounded">${objeto.coleccion}</span>
                             <p class="card-text">${objeto.descripcion}</p>
-                            <a href="#" class="btn btn-primary" data-id="${objeto.id}">Comprar</a>
+                            <a href="#" class="btn btn-primary comprar" id="comprar" data-id="${objeto.id}">Comprar</a>
                             <a target="_blank" href="${objeto.imagenes[1]}" class="card-link m-5">Vista 3D</a>
                         </div>
                         <div class="container d-flex justify-content-end">
