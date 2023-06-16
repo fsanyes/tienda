@@ -41,6 +41,7 @@ botonSiguiente.addEventListener('click', (e) => {
     e.preventDefault();
 });
 
+//Actualiza la pagina 
 const setPagina = (siguientePagina) => {
     paginaActual = siguientePagina;
     //Impide que paginaActual salga del rango de paginas
@@ -77,7 +78,7 @@ const manejaPaginaActiva = () => {
     if (paginaActual === nPaginas) botonSiguiente.classList.add("disabled");
     else botonSiguiente.classList.remove("disabled")
 }
-
+//Recibe un array con los items y los muestra segun el rango
 function muestraItems(items, rango, rangoPrev) {
     const listaItems = document.getElementById('items');//Lista de items de la pagina
     let index = rangoPrev;

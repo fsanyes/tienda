@@ -3,6 +3,7 @@
 let carrito = [];
 
 const listaItems = document.getElementById("listaItems");
+
 listaItems.addEventListener("click", e => {
     if (e.target.tagName === "BUTTON") {
         console.log(e.target.tagName)
@@ -23,14 +24,9 @@ const guardaStorage = function() {
 
 }
 
-const compruebaStorage = function() {
-    if (typeof(Storage) !== undefined) {
-        console.log("LocalStorage disponible")
-    }
-    else {
-        console.log("LocalStorage no es soportado por el navegador")
-    }
-}
+cargaStorage();
+
+cargaItemsAgrupados(carrito);
 
 //Si existen varios objetos con el mismo id, no muestra los 2 si no que los agrupa
 function cargaItemsAgrupados(carrito){
@@ -67,15 +63,13 @@ function cargaItemsAgrupados(carrito){
         li.classList.add("d-flex")
         li.classList.add("justify-content-between")
         //Datos del producto
-        li.innerHTML = `${item.nombre}, Precio: ${item.precio}, Cantidad: ${item.cantidad}
+        li.innerHTML = `${item.nombre}, Precio: ${item.precio}€, Cantidad: ${item.cantidad}
                         <button type="button" data-id=${item.id} class="btn-close" aria-label="Close"></button>`
         listaItems.append(li)
     })
 }
 
-
-
-// eliminaItem("6");
+// Crea un nuevo array sin incluir el indicado en la variable 
 function eliminaItem(id) {
     const arrayObjetos = []
     const objetos = JSON.parse(localStorage.getItem("carrito"))
@@ -86,9 +80,4 @@ function eliminaItem(id) {
     localStorage.setItem("carrito", JSON.stringify(arrayObjetos));
     cargaStorage();
 }
-// console.log(JSON.parse(localStorage.getItem("carrito")))
 
-compruebaStorage();
-cargaStorage();
-
-cargaItemsAgrupados(carrito);

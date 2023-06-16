@@ -1,4 +1,4 @@
-
+//Obtiene los detalles del objeto seleccionado, despues llama a fetchObjetos
 const cargaStorageDetalles = function () {
     const detallesJSON = localStorage.getItem("detalles");
 
@@ -13,7 +13,7 @@ const cargaStorageDetalles = function () {
         return
     }
 }
-
+//Carga los datos de objetos.json para mostrar los detalles del objeto seleccionado
 const fetchObjetos = async () => {
     try {
         const resul = await fetch('./src/objetos.json');
@@ -36,7 +36,7 @@ const fetchObjetos = async () => {
 let idStorage;
 cargaStorageDetalles();
 
-
+//Muestra los detalles del objeto seleccionado
 function muestraDetalles(objeto) {
     const div = document.createElement("div");
     const contenedorDetalles = document.getElementById("detalles");
@@ -65,13 +65,15 @@ function muestraDetalles(objeto) {
                     </div>`
     contenedorDetalles.append(div)
 }
-//Calcular estado del arma
+
+//Calcula el estado del arma
+function calculaDesgaste(float) {
+
 // 0 – 0.07 – Factory New 
 // 0.07 – 0.15 – Minimal Wear 
 // 0.15 – 0.38 – Field-Tested 
 // 0.38 – 0.45 – Well-Worn 
 // 0.45 – 1 – Battle-Scarred
-function calculaDesgaste(float) {
 
     if (float >= 0 && float < 0.07) {
         return "Recien fabricado";
@@ -86,6 +88,7 @@ function calculaDesgaste(float) {
     } else {
         return "Valor no válido";
     }
+    //!No funciona
     // switch(float) {
     //     case 0:
     //     case 0.07:

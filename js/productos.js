@@ -3,7 +3,18 @@ const destacados = document.getElementById('objetos');
 const templateCard = document.getElementById('template-card').content
 const fragmento = document.createDocumentFragment();
 const items = document.getElementById("items")
-// LocalStorage
+
+/* Funciones del carrito 
+ * cargaStorage -> comprueba si existe carrito, 
+    True: almacena el localStorage en carrito y llama a carritoActivo
+    False: carrito se queda vacio
+ * guardaStorage -> guarda los datos del carrito en el localStorage
+ * compruebaStorage -> Solo muestra por pantalla si el localStorage se encuentra disponible para el navegador
+ * carritoActivo -> Controla los estilos del carrito y actualiza el nº de productos del carrito, es solo visual
+ * sumaCarrito -> Comprueba que el boton seleccionado contiene la clase "comprar" y llama a setCarrito
+ * setCarrito -> Crea un objeto, lo almacena en el carrito y llama a carritoActivo, despues actualiza el localstorage con guardaStorage
+*/
+
 const cargaStorage = function () {
     
     const carritoJSON = localStorage.getItem("carrito");
@@ -20,7 +31,6 @@ const cargaStorage = function () {
 
 const guardaStorage = function() {
     localStorage.setItem("carrito", JSON.stringify(carrito));
-
 }
 const compruebaStorage = function() {
     if (typeof(Storage) !== undefined) {
@@ -39,6 +49,7 @@ compruebaStorage();
 
 cargaStorage();
 
+
 function carritoActivo() {
     const iconoCarrito = document.getElementById('carrito');
     const nProductos = document.getElementById('nProductos');
@@ -49,7 +60,13 @@ function carritoActivo() {
     }
     nProductos.innerHTML = carrito.length;
 }
-//TODO: Hacer detalles utilizando funcion parecida a esta cambiando comprar por detalles 
+
+/*  Funciones que controlan los detalles
+ * detallesProducto(elemento) -> comprueba que el target es el boton de detalles y llama a setDetalles
+ * setDetalles() -> Crea un objeto con la id asignada al boton y llama a guardaDetalles
+ * guardaDetalles -> recoge la id en forma de objeto y la almacena en el localStorage
+*/
+
 const detallesProducto = e => {
     // console.log(e.target);
     console.log(e.target.id);
@@ -60,12 +77,12 @@ const detallesProducto = e => {
 }
 
 const setDetalles = objeto => {
-    console.log(objeto);
+    // console.log(objeto);
     const producto = {
         id: objeto.querySelector('#detalles').dataset.id,
     }
     // const productoSeleccionado = datos.filter(({id}) => id === producto.id)
-    console.log(producto);
+    // console.log(producto);
     guardaDetalles(producto);
 }
 
@@ -95,15 +112,16 @@ const setCarrito = objeto => {
     carritoActivo();
     guardaStorage();
 }
-
+//Carga los datos de objetos.json al cargar index.html
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
 })
-
+//Eventos de botones Destacados
 destacados.addEventListener('click', e => {
     sumaCarrito(e);
     detallesProducto(e)
 })
+//Eventos de botones de Paginacion
 items.addEventListener('click', e => {
     sumaCarrito(e);
     detallesProducto(e)
@@ -119,6 +137,7 @@ const fetchData = async () => {
         console.log("error al cargar archivo JSON")
     }
 }
+
 //Muestra los objetos destacados
 const pintarObjetosDestacados = datos => {
     const productosDestacados = datos.filter(({destacado}) => destacado === true)

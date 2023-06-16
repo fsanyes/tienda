@@ -24,7 +24,9 @@ const fetchBuscador = async (input) => {
     }
 }
 
-
+//Crea una lista con los datos de los objetos y la coloca en el buscador,
+// si el input que recibe coincide con el contenido de la lista, esta se añade,
+// las lista que NO coincidan con el input no se mostraran
 function muestraDropdown(datos, input) {
     // console.log(input)
     // console.log(datos)
