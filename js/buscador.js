@@ -1,7 +1,9 @@
 const buscador = document.getElementById("buscador")
+const listaObjetos = document.getElementById("dropdownMenu")
+
 buscador.addEventListener('input',() =>{
     
-    fetchBuscador(buscador.value)
+    fetchBuscador(buscador.value.toLowerCase())
 })
 
 const fetchBuscador = async (input) => {
@@ -24,9 +26,9 @@ const fetchBuscador = async (input) => {
 
 
 function muestraDropdown(datos, input) {
-    console.log(input)
-    console.log(datos)
-    const listaObjetos = document.getElementById("dropdownMenu")
+    // console.log(input)
+    // console.log(datos)
+    
     
     while (listaObjetos.firstChild) {
         listaObjetos.removeChild(listaObjetos.firstChild);
@@ -34,11 +36,37 @@ function muestraDropdown(datos, input) {
 
     datos.forEach(objeto => {
         const li = document.createElement("li")
-        li.innerHTML = `<p class="d-flex"><a class="dropdown-item" href="detalles.html">${objeto.nombre}</a><button class="btn btn-success">Detalles</button></p>`
+        li.innerHTML = `<p class="d-flex"><a class="dropdown-item" href="detalles.html" data-id="${objeto.id}">${objeto.nombre}</a></p>`    
         listaObjetos.append(li)
     })
 
-    if(listaObjetos.childNodes) console.log(listaObjetos.childNodes)
+    const arrayLi = Array.from(listaObjetos.childNodes)
+    // console.log(arrayLi)
+    arrayLi.forEach(linea => {
+        const contenido = linea.textContent.toLowerCase();
+        if (contenido.includes(input)) {
+            // console.log("dentro")
+            linea.hidden = false
+        }
+        else {
+            linea.hidden = true;
+        }
+    })
     
+    
+}
+
+listaObjetos.addEventListener('click',(e) => {
+    if(e.target.dataset.id) {
+        const objeto = {
+            id: e.target.dataset.id
+        }
+        guardaDetalles(objeto)
+        // window.location.reload();
+    }
+})
+
+function guardaDetalles(id) {
+    localStorage.setItem("detalles", JSON.stringify(id));
     
 }
