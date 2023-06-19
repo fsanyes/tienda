@@ -40,9 +40,9 @@ function muestraDropdown(datos, input) {
         const li = document.createElement("li")
         // li.innerHTML = `<p class="d-flex"><a class="dropdown-item" href="detalles.html" data-id="${objeto.id}">${objeto.nombre}</a></p>`    
         li.innerHTML = `<a class="dropdown-item" href="detalles.html">
-                            <div class="container d-flex" style="margin-top: -10px;">
-                            <p class="d-flex mt-3"  data-id="${objeto.id}">${objeto.nombre}
-                                <div class="container mt-2 d-flex flex-column">
+                            <div class="container d-flex" data-id="${objeto.id}" style="margin-top: -10px;">
+                            <p class="d-flex mt-3" >${objeto.nombre}
+                                <div class="container mt-2 d-flex flex-column" data-id="${objeto.id}">
                                     <p class="m-0 align-self-end">${objeto.categoria}</p>
                                     <hr style="margin: 0px ;">
                                     <p class="m-0 align-self-end">${objeto.coleccion}</p>
@@ -70,9 +70,9 @@ function muestraDropdown(datos, input) {
 
 listaObjetos.addEventListener('click',(e) => {
     console.log(e.target.parentNode)
-    if(e.target.dataset.id) {
+    if(e.target.parentNode.dataset.id) {
         const objeto = {
-            id: e.target.dataset.id
+            id: e.target.parentNode.dataset.id
         }
         guardaDetalles(objeto)
         // window.location.reload();
