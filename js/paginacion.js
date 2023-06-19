@@ -1,7 +1,7 @@
 
 let nPaginas;
 let itemsObjetos = [];
-let maxItems = 12;//Max items por pagina
+let maxItems = 4;//Max items por pagina
 let paginaActual = 1;
 
 const fetchObjetos = async () => {
