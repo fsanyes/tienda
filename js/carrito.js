@@ -71,7 +71,6 @@ function cargaItemsAgrupados(carrito){
     })
 
     //Crea el precio total
-    console.log(precioTotal)
     const li = document.createElement("li");
     li.classList.add("list-group-item");
     li.classList.add("d-flex")
