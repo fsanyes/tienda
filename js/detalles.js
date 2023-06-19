@@ -137,7 +137,8 @@ function muestraDetalles(objeto) {
     div.innerHTML = `<img class="w-50" src="${objeto.imagenes[0]}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <div class="container d-flex flex-column">
-                            <h5 class="card-title">${objeto.nombre} |<span class="text-success" id="precio"> ${objeto.precio}€</span></h5><span class="bg-black text-secondary rounded">${objeto.coleccion}</span>
+                            <h5 class="card-title">${objeto.nombre} |<span class="text-success" id="precio"> ${objeto.precio}€</span></h5>
+                            <p><span class="bg-black text-secondary rounded">${objeto.coleccion}</span></p>
                             <p class="card-text">${objeto.descripcion}</p>
                             <a href="#" class="btn btn-primary comprar" data-id="${objeto.id}">Comprar</a>
                             <a target="_blank" href="${objeto.imagenes[1]}" class="card-link m-5">Vista 3D</a>

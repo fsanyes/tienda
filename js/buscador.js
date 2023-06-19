@@ -70,12 +70,18 @@ function muestraDropdown(datos, input) {
 
 listaObjetos.addEventListener('click',(e) => {
     console.log(e.target.parentNode)
-    if(e.target.parentNode.dataset.id) {
+    if(e.target.parentNode.dataset.id) {//Si el click se realiza sobre el texto
         const objeto = {
             id: e.target.parentNode.dataset.id
         }
         guardaDetalles(objeto)
         // window.location.reload();
+    }
+    if (e.target.dataset.id) {//Si el click se realiza sobre
+        const objeto = {
+            id: e.target.dataset.id
+        }
+        guardaDetalles(objeto)
     }
 })
 
