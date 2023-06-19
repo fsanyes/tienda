@@ -53,9 +53,10 @@ function cargaItemsAgrupados(carrito){
             }
         }
     })
+
     //Recoge los valores de los productos agrupados
     const itemsAgrupados = Object.values(resultado)
-
+    let precioTotal = 0;
     itemsAgrupados.forEach(item => {
         const li = document.createElement("li")
         //Clases de bootstrap
@@ -66,7 +67,18 @@ function cargaItemsAgrupados(carrito){
         li.innerHTML = `${item.nombre}, Precio: ${item.precio}€, Cantidad: ${item.cantidad}
                         <button type="button" data-id=${item.id} class="btn-close" aria-label="Close"></button>`
         listaItems.append(li)
+        precioTotal += item.precio;
     })
+
+    //Crea el precio total
+    console.log(precioTotal)
+    const li = document.createElement("li");
+    li.classList.add("list-group-item");
+    li.classList.add("d-flex")
+    li.classList.add("justify-content-end")
+    li.innerHTML = `Precio total:&nbsp;<span class="text-success">${precioTotal.toFixed(2)}€</span>`;
+    listaItems.append(li);
+
 }
 
 // Crea un nuevo array sin incluir el indicado en la variable 

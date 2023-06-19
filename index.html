@@ -24,38 +24,7 @@
 				<nav class="navbar navbar-expand-lg bg-body-secondary fixed-top" data-bs-theme="dark">
 					<div class="container-fluid">
 						<a class="navbar-brand" href="#"><img class="rounded-4" src="./src/imagenes/logo.jpg" width="80px" alt=""></a>
-						<!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-							data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
-							aria-label="Toggle navigation">
-							<span class="navbar-toggler-icon"></span>
-						</button>
-						<div class="collapse navbar-collapse" id="navbarColor01">
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-								<li class="nav-item">
-									<a class="nav-link active" aria-current="page" href="#">Home</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Features</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Pricing</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">About</a>
-								</li>
-							</ul>
-						</div> -->
 						<div class="d-flex justify-content-center">
-							
-							<!-- <form class="d-flex me-auto mb-2" role="search">
-								<button class="btn btn-outline-light" type="submit"><svg
-										xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-										class="bi bi-search" viewBox="0 0 16 16">
-										<path
-											d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-									</svg></button>
-								<input class="form-control me-2" type="text" placeholder="Buscar" aria-label="Search" id="buscador">
-							</form> -->
 							<!-- Bucador -->
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
@@ -66,8 +35,8 @@
 											d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 									</svg></button></a>
 								</div>
+								<!-- Dropdown -->
 								<div class="dropdown">
-									<!-- <input type="text" class="form-control" placeholder="Buscar..." aria-label="Buscador" id="buscador"> -->
 									<input class="ms-1 btn btn-dark dropdown-toggle" type="input" data-bs-toggle="dropdown" aria-expanded="false" id="buscador" placeholder="Buscar...">
 									<ul class="dropdown-menu" id="dropdownMenu">
 										
@@ -157,9 +126,6 @@
 										Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
 										porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
 									</p>
-									<!-- <p>
-										<button class="m-1 btn btn-primary comprar" href="#">Comprar</button><span id="precio" class="precio" href="#">Precio</span>
-									</p> -->
 								</div>
 								<button class="m-1 btn btn-primary comprar" href="#">Comprar</button> 
 								<p class="m-auto p-2"><span id="precio"></span><span id="simbolo">€</span></p>
@@ -168,218 +134,26 @@
 					</template>
 				</div>
 				<hr>
+				<!-- Paginacion -->
 				<div class="container m-5">
 					<ul class="d-flex flex-wrap gap-2" id="items">
-						<!-- <li>Dato: 1</li>
-						<li>Dato: 2</li>
-						<li>Dato: 3</li>
-						<li>Dato: 4</li>
-						<li>Dato: 5</li>
-						<li>Dato: 6</li>
-						<li>Dato: 7</li>
-						<li>Dato: 8</li>
-						<li>Dato: 9</li> -->
+
 					</ul>
 					<ul class="pagination" id="paginacion">
 						<li class="page-item" id="botonAnterior"><a href="#" class="page-link">&lt;</a></li>
 						<li class="page-item" id="botonSiguiente"><a href="#" class="page-link">&gt;</a></li>
 					</ul>
 				</div>
-			
-				<!-- Paginas de productos -->
-				<!-- <nav>
-					<ul class="pt-3 pagination">
-						<li class="page-item">
-							<a class="page-link" href="#">Previous</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">1</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">2</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">3</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">4</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">5</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">Next</a>
-						</li>
-					</ul>
-				</nav> -->
 			</div>
 		</div>
-		<hr>
-		<!-- Sobre nosotros -->
-		<!-- <div class="row">
-			<div class="pt-3 col-md-12">
-				<div class="page-header">
-					<h1>
-						LayoutIt! <small>Interface Builder for Bootstrap</small>
-					</h1>
-				</div>
-				<p>
-					Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien
-					sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed
-					vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere
-					diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo
-						imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna,
-					vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu,
-						pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
-				</p>
-				<div class="pt-3 row">
-					<div class="col-md-4">
-
-						<div class="jumbotron">
-							<h2>
-								Hello, world!
-							</h2>
-							<p>
-								This is a template for a simple marketing or informational website. It includes a large
-								callout called the hero unit and three supporting pieces of content. Use it as a
-								starting point to create something more unique.
-							</p>
-							<p>
-								<a class="btn btn-primary btn-large" href="#">Learn more</a>
-							</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						
-						<div class="jumbotron">
-							<h2>
-								Hello, world!
-							</h2>
-							<p>
-								This is a template for a simple marketing or informational website. It includes a large
-								callout called the hero unit and three supporting pieces of content. Use it as a
-								starting point to create something more unique.
-							</p>
-							<p>
-								<a class="btn btn-primary btn-large" href="#">Learn more</a>
-							</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						
-						<div class="jumbotron">
-							<h2>
-								Hello, world!
-							</h2>
-							<p>
-								This is a template for a simple marketing or informational website. It includes a large
-								callout called the hero unit and three supporting pieces of content. Use it as a
-								starting point to create something more unique.
-							</p>
-							<p>
-								<a class="btn btn-primary btn-large" href="#">Learn more</a>
-							</p>
-						</div>
-					</div>
-				</div>
-				<div class="pt-3 row">
-					<div class="col-md-4">
-						
-						<div class="jumbotron">
-							<h2>
-								Hello, world!
-							</h2>
-							<p>
-								This is a template for a simple marketing or informational website. It includes a large
-								callout called the hero unit and three supporting pieces of content. Use it as a
-								starting point to create something more unique.
-							</p>
-							<p>
-								<a class="btn btn-primary btn-large" href="#">Learn more</a>
-							</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						
-						<div class="jumbotron">
-							<h2>
-								Hello, world!
-							</h2>
-							<p>
-								This is a template for a simple marketing or informational website. It includes a large
-								callout called the hero unit and three supporting pieces of content. Use it as a
-								starting point to create something more unique.
-							</p>
-							<p>
-								<a class="btn btn-primary btn-large" href="#">Learn more</a>
-							</p>
-						</div>
-					</div>
-					<div class="col-md-4">
-						
-						<div class="jumbotron">
-							<h2>
-								Hello, world!
-							</h2>
-							<p>
-								This is a template for a simple marketing or informational website. It includes a large
-								callout called the hero unit and three supporting pieces of content. Use it as a
-								starting point to create something more unique.
-							</p>
-							<p>
-								<a class="btn btn-primary btn-large" href="#">Learn more</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		
+			<hr>
+			<!-- <hr> -->
+			<!-- Formulario contacto -->
 		<div class="row">
-			<div class="pt-3 col-md-12">
-				<div class="row">
-					<div class="col-sm-6 col-md-3 equipo">
-						<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
-							class="rounded-circle">
-						<address>
-							<strong>Twitter, Inc.</strong><br> 795 Folsom Ave, Suite 600<br> San Francisco, CA 94107<br>
-							<abbr title="Phone">P:</abbr> (123) 456-7890
-						</address>
-					</div>
-					<div class="col-sm-6 col-md-3 equipo">
-						<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
-							class="rounded-circle">
-						<address>
-							<strong>Twitter, Inc.</strong><br> 795 Folsom Ave, Suite 600<br> San Francisco, CA 94107<br>
-							<abbr title="Phone">P:</abbr> (123) 456-7890
-						</address>
-					</div>
-					<div class="col-sm-6 col-md-3 equipo">
-						<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
-							class="rounded-circle">
-						<address>
-							<strong>Twitter, Inc.</strong><br> 795 Folsom Ave, Suite 600<br> San Francisco, CA 94107<br>
-							<abbr title="Phone">P:</abbr> (123) 456-7890
-						</address>
-					</div>
-					<div class="col-sm-6 col-md-3 equipo">
-						<img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg"
-							class="rounded-circle">
-						<address>
-							<strong>Twitter, Inc.</strong><br> 795 Folsom Ave, Suite 600<br> San Francisco, CA 94107<br>
-							<abbr title="Phone">P:</abbr> (123) 456-7890
-						</address>
-					</div>
-				</div> -->
-				<!-- <hr> -->
-				<!-- Formulario contacto -->
-				<div class="row">
-					<div class="mt-5 mb-5 pt-3 pb-3 d-flex justify-content-center col-md-12">
-						<button type="button" class="btn btn-outline-primary">
-							Contacta con nosotros
-						</button>
-					</div>
-				</div>
+			<div class="mt-5 mb-5 pt-3 pb-3 d-flex justify-content-center col-md-12">
+				<button type="button" class="btn btn-outline-primary">
+					Contacta con nosotros
+				</button>
 			</div>
 		</div>
 		<hr>

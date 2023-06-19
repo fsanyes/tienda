@@ -41,7 +41,7 @@ const setCarrito = objeto => {
     console.log(objeto);
     const producto = {
         id: objeto.querySelector('.comprar').dataset.id,//Cambiado 'button' por '#comprar'
-        nombre: objeto.querySelector('h5').textContent,
+        nombre: objeto.querySelector('#nombre').textContent,
         precio: objeto.querySelector('#precio').textContent
     }
     carrito.push(producto);
@@ -137,7 +137,7 @@ function muestraDetalles(objeto) {
     div.innerHTML = `<img class="w-50" src="${objeto.imagenes[0]}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <div class="container d-flex flex-column">
-                            <h5 class="card-title">${objeto.nombre} |<span class="text-success" id="precio"> ${objeto.precio}€</span></h5>
+                            <h5 class="card-title"><span id="nombre">${objeto.nombre}</span> | <span class="text-success" id="precio">${objeto.precio}€</span></h5>
                             <p><span class="bg-black text-secondary rounded">${objeto.coleccion}</span></p>
                             <p class="card-text">${objeto.descripcion}</p>
                             <a href="#" class="btn btn-primary comprar" data-id="${objeto.id}">Comprar</a>
