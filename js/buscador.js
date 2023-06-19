@@ -38,7 +38,17 @@ function muestraDropdown(datos, input) {
 
     datos.forEach(objeto => {
         const li = document.createElement("li")
-        li.innerHTML = `<p class="d-flex"><a class="dropdown-item" href="detalles.html" data-id="${objeto.id}">${objeto.nombre}</a></p>`    
+        // li.innerHTML = `<p class="d-flex"><a class="dropdown-item" href="detalles.html" data-id="${objeto.id}">${objeto.nombre}</a></p>`    
+        li.innerHTML = `<a class="dropdown-item" href="detalles.html">
+                            <div class="container d-flex" style="margin-top: -10px;">
+                            <p class="d-flex mt-3"  data-id="${objeto.id}">${objeto.nombre}
+                                <div class="container mt-2 d-flex flex-column">
+                                    <p class="m-0 align-self-end">${objeto.categoria}</p>
+                                    <hr style="margin: 0px ;">
+                                    <p class="m-0 align-self-end">${objeto.coleccion}</p>
+                                </div>
+                            </div>
+                            </a>`
         listaObjetos.append(li)
     })
 
@@ -59,6 +69,7 @@ function muestraDropdown(datos, input) {
 }
 
 listaObjetos.addEventListener('click',(e) => {
+    console.log(e.target.parentNode)
     if(e.target.dataset.id) {
         const objeto = {
             id: e.target.dataset.id
